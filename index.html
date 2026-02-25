@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDEM Clinic | Цифрова Стоматологія Коломия</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+    <div class="modal-overlay" id="adminModal">
+        <div class="modal-content">
+            <i class="fas fa-times close-modal" onclick="toggleModal()"></i>
+            <i class="fas fa-user-shield" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
+            <h3 style="margin-bottom: 20px;">Вхід в систему</h3>
+            <input type="password" id="adminPass" placeholder="Пароль адміністратора">
+            <button onclick="verifyPassword()" class="btn-cta" style="width: 100%;">Увійти</button>
+            <p id="errorMsg" style="color: #ff4d4d; margin-top: 15px; font-size: 0.85rem; display: none;">Невірний пароль! Спробуйте ще раз.</p>
+        </div>
+    </div>
+
+    <header>
+        <nav class="navbar">
+            <a href="#home" class="logo"><i class="fas fa-tooth"></i>EDEM<span>.dental</span></a>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-links" id="nav-list">
+                <li><a href="#home">Головна</a></li>
+                <li><a href="#about">Про нас</a></li>
+                <li><a href="#services">Послуги</a></li>
+                <li><a href="#prices">Ціни</a></li>
+                <li><a href="#doctors">Лікарі</a></li>
+                <li><a href="#reviews">Відгуки</a></li>
+                <li><a href="#contact">Контакти</a></li>
+                <li class="mobile-only-btn"><button onclick="toggleModal()" class="btn-admin"><i class="fas fa-lock"></i> Адмін</button></li>
+            </ul>
+
+            <div class="nav-btns">
+                <button onclick="toggleModal()" class="btn-admin"><i class="fas fa-lock"></i> Увійти </button>
+                <a href="#contact" class="btn-cta">Записатись онлайн</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content reveal">
+            <h1>Майбутнє вашої <br><span>посмішки</span> починається тут</h1>
+            <p>Преміальна цифрова клініка Коломиї. Швейцарська якість, штучний інтелект та лікування під мікроскопом.</p>
+            <a href="#contact" class="btn-cta" style="padding: 20px 50px;">Отримати консультацію</a>
+        </div>
+    </section>
+
+    <section id="about" class="container reveal">
+        <div class="about-wrapper">
+            <div class="about-img-box">
+                <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?auto=format&fit=crop&q=80&w=1000" alt="EDEM Clinic Interior">
+            </div>
+            <div class="about-text">
+                <h2>Ми створили місце, де <span>не страшно</span></h2>
+                <p>EDEM Clinic — це поєднання інноваційної стоматології та максимального затишку. Ми перші в місті впровадили цифровий сканер замість звичайних зліпків, щоб гарантувати пацієнтам 100% точність.</p>
+                <div class="stats-grid">
+                    <div class="stat-card"><h3>10+</h3><p>Років досвіду</p></div>
+                    <div class="stat-card"><h3>2к+</h3><p>Щасливих пацієнтів</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="container reveal">
+        <div class="section-header"><h2>Наші <span>Послуги</span></h2></div>
+        <div class="services-grid">
+            <div class="service-card">
+                <i class="fas fa-microscope"></i>
+                <h3>Мікроскопія</h3>
+                <p>Рятуємо безнадійні зуби завдяки 40-кратному збільшенню та точності до міліметра.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-wand-magic-sparkles"></i>
+                <h3>Естетика</h3>
+                <p>Керамічні вініри e-max та художня реставрація для вашої впевненості.</p>
+            </div>
+            <div class="service-card">
+                <i class="fas fa-notes-medical"></i>
+                <h3>Імплантація</h3>
+                <p>Встановлення імплантів провідних світових брендів з пожиттєвою гарантією.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="prices" class="container reveal">
+        <div class="section-header">
+            <h2>Прайс-лист <span>послуг</span></h2>
+        </div>
+        <div class="price-table-container">
+            <div class="price-row">
+                <span class="price-name">Консультація та цифрове сканування</span>
+                <span class="price-value">від 500 грн</span>
+            </div>
+            <div class="price-row">
+                <span class="price-name">Професійна гігієна (Air Flow + УЗ)</span>
+                <span class="price-value">1 200 грн</span>
+            </div>
+            <div class="price-row">
+                <span class="price-name">Лікування каналів під мікроскопом</span>
+                <span class="price-value">від 2 500 грн</span>
+            </div>
+            <div class="price-row">
+                <span class="price-name">Художня реставрація зуба</span>
+                <span class="price-value">від 1 800 грн</span>
+            </div>
+            <div class="price-row">
+                <span class="price-name">Керамічний вінір E-max</span>
+                <span class="price-value">12 000 грн</span>
+            </div>
+            <div class="price-row">
+                <span class="price-name">Імплантація (без коронки)</span>
+                <span class="price-value">від 15 000 грн</span>
+            </div>
+            <div class="price-row">
+                <span class="price-name">Відбілювання зубів (Beyond)</span>
+                <span class="price-value">4 500 грн</span>
+            </div>
+        </div>
+    </section>
+
+   <section id="doctors" class="container reveal">
+        <div class="section-header"><h2>Наші <span>лікарі</span></h2></div>
+        <div class="doctors-grid">
+            <div class="doctor-card">
+                <div class="experience-tag">10 років досвіду</div>
+                <div class="doctor-img-box">
+                    <img src="https://images.kinorium.com/movie/shot/2021838/h280_42212361.jpg" class="doctor-img" alt="Максим Білий">
+                    <div class="doctor-info-glass">
+                        <h4>Максим Білий</h4>
+                        <p>Головний лікар • Хірург</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="experience-tag">10 років досвіду</div>
+                <div class="doctor-img-box">
+                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=800" class="doctor-img" alt="Олена Коваль">
+                    <div class="doctor-info-glass">
+                        <h4>Олена Коваль</h4>
+                        <p>Терапевт • Ендодонтист</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="experience-tag">13 років досвіду</div>
+                <div class="doctor-img-box">
+                    <img src="https://101stomatolog.com.ua/assets/cache/images/statyidlyaposetitelya/27.pochemu_stomatolog_ne_yubit_patsuentov/zloy_stomatolog_1-x-558.jpg" class="doctor-img" alt="Дмитро Соколов">
+                    <div class="doctor-info-glass">
+                        <h4>Дмитро Нечуй</h4>
+                        <p>Ортодонт • Гнатолог</p>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <section id="reviews" class="reviews-section reveal">
+        <div class="container">
+            <div class="section-header"><h2>Що кажуть <span>пацієнти</span></h2></div>
+            <div class="reviews-container" id="reviewsContainer">
+    <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"М.Білий справді хороший стоматолог. Після виривання зубів подарував безкоштовний браслет ручної роботи!"</p>
+        <strong>— Андрійко</strong>
+    </div>
+    <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Робила вініри у Максима Білого. Результат перевершив всі очікування."</p>
+        <strong>— Анна</strong>
+    </div>
+    </div>
+            <div class="write-review-box">
+                <h3 style="text-align: center; margin-bottom: 30px;">Поділіться враженнями</h3>
+                <form id="revForm">
+                    <div class="star-rating">
+                        <input type="radio" id="star5" name="rating" value="5" required><label for="star5" class="fas fa-star"></label>
+                        <input type="radio" id="star4" name="rating" value="4"><label for="star4" class="fas fa-star"></label>
+                        <input type="radio" id="star3" name="rating" value="3"><label for="star3" class="fas fa-star"></label>
+                        <input type="radio" id="star2" name="rating" value="2"><label for="star2" class="fas fa-star"></label>
+                        <input type="radio" id="star1" name="rating" value="1"><label for="star1" class="fas fa-star"></label>
+                    </div>
+                    <input type="text" id="revName" placeholder="Ваше ім'я" required>
+                    <textarea id="revText" placeholder="Ваш відгук..." rows="4" required></textarea>
+                    <button type="submit" class="btn-cta" style="width: 100%;">Надіслати відгук</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="container reveal">
+        <div class="contact-wrapper">
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2645.6748436402446!2d25.0401!3d48.5283!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDjCsDMxJzQxLjkiTiAyNcKwMDInMjQuNCJF!5e0!3m2!1suk!2sua!4v1620000000000" loading="lazy"></iframe>
+            </div>
+            <div class="contact-form">
+                <h3 style="font-size: 2rem; margin-bottom: 25px;">Запис на візит</h3>
+               <form id="appForm">
+    <div class="input-group">
+        <i class="fas fa-user"></i>
+        <input type="text" placeholder="Ваше ім'я" required>
+    </div>
+
+    <div class="input-group">
+        <i class="fas fa-phone"></i>
+        <input type="tel" id="user_phone" placeholder="+380" required>
+    </div>
+
+    <div class="input-group">
+        <i class="fas fa-user-md"></i>
+        <select id="doctorSelect" required>
+            <option value="" disabled selected>Оберіть лікаря</option>
+            <option value="Максим Білий">Максим Білий</option>
+            <option value="Олена Коваль">Олена Коваль</option>
+            <option value="Дмитро Нечуй">Дмитро Нечуй</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn-cta">Записатися на прийом</button>
+</form>
+                <div style="margin-top: 40px; border-top: 1px solid var(--border); padding-top: 30px;">
+                    <p style="margin-bottom: 15px;"><i class="fas fa-location-dot" style="color:var(--accent); margin-right: 10px;"></i> м. Коломия, вул. Гетьманська, 24</p>
+                    <p><i class="fas fa-phone" style="color:var(--accent); margin-right: 10px;"></i> +38 (067) 124 60 42</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <a href="#" class="logo">EDEM<span>.dental</span></a>
+                <p style="margin-top: 20px; color: var(--text-dim);">Професійна стоматологія, де кожен пацієнт стає частиною родини.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Швидкі посилання</h4>
+                <a href="#about">Про клініку</a>
+                <a href="#services">Послуги</a>
+                <a href="#prices">Ціни</a>
+                <a href="#doctors">Лікарі</a>
+                <a href="#contact">Запис</a>
+            </div>
+            <div class="footer-col">
+                <h4>Графік роботи</h4>
+                <p style="color: var(--text-dim);">Пн-Пт: 09:00 — 19:00</p>
+                <p style="color: var(--text-dim);">Сб: 10:00 — 15:00</p>
+                <p style="color: var(--text-dim);">Нд: Вихідний</p>
+            </div>
+        </div>
+    </footer>
+   
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+
+<script>
+  // Конфігурація вашого проєкту
+const firebaseConfig = {
+  apiKey: "AIzaSyCMoz3O3WXCLibLw1_dSh5ZhMKYPK1C6WU",
+  authDomain: "edem-bbad7.firebaseapp.com",
+  databaseURL: "https://edem-bbad7-default-rtdb.firebaseio.com",
+  projectId: "edem-bbad7",
+  storageBucket: "edem-bbad7.firebasestorage.app",
+  messagingSenderId: "900048422349",
+  appId: "1:900048422349:web:84c4215d59698a81e3b084",
+  measurementId: "G-3L2WK17CS7"
+};
+
+  
+  // Ініціалізація
+  firebase.initializeApp(firebaseConfig);
+  const db = firebase.database(); // Ця змінна 'db' тепер доступна в logik.js
+</script>
+
+    <script src="logik.js"></script>
+
+</body>
+</html>
