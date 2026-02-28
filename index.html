@@ -15,15 +15,19 @@
 <body>
 
     <div class="modal-overlay" id="adminModal">
-        <div class="modal-content">
-            <i class="fas fa-times close-modal" onclick="toggleModal()"></i>
-            <i class="fas fa-user-shield" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
-            <h3 style="margin-bottom: 20px;">Вхід в систему</h3>
-            <input type="password" id="adminPass" placeholder="Пароль адміністратора">
-            <button onclick="verifyPassword()" class="btn-cta" style="width: 100%;">Увійти</button>
-            <p id="errorMsg" style="color: #ff4d4d; margin-top: 15px; font-size: 0.85rem; display: none;">Невірний пароль! Спробуйте ще раз.</p>
-        </div>
+    <div class="modal-content">
+        <i class="fas fa-times close-modal" onclick="toggleModal()"></i>
+        <i class="fas fa-user-shield" style="font-size: 3rem; color: var(--accent); margin-bottom: 20px;"></i>
+        <h3 style="margin-bottom: 20px;">Вхід в систему</h3>
+        
+        <input type="email" id="adminEmail" placeholder="Email адміністратора">
+        <input type="password" id="adminPass" placeholder="Пароль">
+        
+        <button onclick="verifyPassword()" class="btn-cta" style="width: 100%; margin-top: 10px;">Увійти</button>
+        
+        <p id="errorMsg" style="color: #ff4d4d; margin-top: 15px; display: none; font-size: 0.9rem;"></p>
     </div>
+</div>
 
     <header>
         <nav class="navbar">
@@ -41,9 +45,11 @@
                 <li><a href="#doctors">Лікарі</a></li>
                 <li><a href="#reviews">Відгуки</a></li>
                 <li><a href="#contact">Контакти</a></li>
+                <a href="#results">Результати</a>
+                <a href="#faq">FAQ</a>
                 <li class="mobile-only-btn"><button onclick="toggleModal()" class="btn-admin"><i class="fas fa-lock"></i> Адмін</button></li>
             </ul>
-
+            
             <div class="nav-btns">
                 <button onclick="toggleModal()" class="btn-admin"><i class="fas fa-lock"></i> Увійти </button>
                 <a href="#contact" class="btn-cta">Записатись онлайн</a>
@@ -54,7 +60,7 @@
     <section class="hero" id="home">
         <div class="hero-content reveal">
             <h1>Майбутнє вашої <br><span>посмішки</span> починається тут</h1>
-            <p>Преміальна цифрова клініка Коломиї. Швейцарська якість, штучний інтелект та лікування під мікроскопом.</p>
+            <p>Преміальна цифрова клініка Коломиї. Швейцарська якість, штучний інтелект та лікування под мікроскопом.</p>
             <a href="#contact" class="btn-cta" style="padding: 20px 50px;">Отримати консультацію</a>
         </div>
     </section>
@@ -95,79 +101,20 @@
             </div>
         </div>
     </section>
-
+    
     <section id="prices" class="container reveal">
-        <div class="section-header">
-            <h2>Прайс-лист <span>послуг</span></h2>
-        </div>
-        <div class="price-table-container">
-            <div class="price-row">
-                <span class="price-name">Консультація та цифрове сканування</span>
-                <span class="price-value">від 500 грн</span>
-            </div>
-            <div class="price-row">
-                <span class="price-name">Професійна гігієна (Air Flow + УЗ)</span>
-                <span class="price-value">1 200 грн</span>
-            </div>
-            <div class="price-row">
-                <span class="price-name">Лікування каналів під мікроскопом</span>
-                <span class="price-value">від 2 500 грн</span>
-            </div>
-            <div class="price-row">
-                <span class="price-name">Художня реставрація зуба</span>
-                <span class="price-value">від 1 800 грн</span>
-            </div>
-            <div class="price-row">
-                <span class="price-name">Керамічний вінір E-max</span>
-                <span class="price-value">12 000 грн</span>
-            </div>
-            <div class="price-row">
-                <span class="price-name">Імплантація (без коронки)</span>
-                <span class="price-value">від 15 000 грн</span>
-            </div>
-            <div class="price-row">
-                <span class="price-name">Відбілювання зубів (Beyond)</span>
-                <span class="price-value">4 500 грн</span>
-            </div>
-        </div>
-    </section>
-
-   <section id="doctors" class="container reveal">
-        <div class="section-header"><h2>Наші <span>лікарі</span></h2></div>
-        <div class="doctors-grid">
-            <div class="doctor-card">
-                <div class="experience-tag">10 років досвіду</div>
-                <div class="doctor-img-box">
-                    <img src="https://images.kinorium.com/movie/shot/2021838/h280_42212361.jpg" class="doctor-img" alt="Максим Білий">
-                    <div class="doctor-info-glass">
-                        <h4>Максим Білий</h4>
-                        <p>Головний лікар • Хірург</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="doctor-card">
-                <div class="experience-tag">10 років досвіду</div>
-                <div class="doctor-img-box">
-                    <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=800" class="doctor-img" alt="Олена Коваль">
-                    <div class="doctor-info-glass">
-                        <h4>Олена Коваль</h4>
-                        <p>Терапевт • Ендодонтист</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="doctor-card">
-                <div class="experience-tag">13 років досвіду</div>
-                <div class="doctor-img-box">
-                    <img src="https://101stomatolog.com.ua/assets/cache/images/statyidlyaposetitelya/27.pochemu_stomatolog_ne_yubit_patsuentov/zloy_stomatolog_1-x-558.jpg" class="doctor-img" alt="Дмитро Соколов">
-                    <div class="doctor-info-glass">
-                        <h4>Дмитро Нечуй</h4>
-                        <p>Ортодонт • Гнатолог</p>
-                    </div>
-                </div>
-            </div>
-    </section>
+    <div class="section-header">
+        <h2>Прайс-лист <span>послуг</span></h2>
+    </div>
+    <div class="price-grid" id="priceListContainer">
+        <p style="text-align: center; color: var(--text-dim);">Завантаження цін...</p>
+    </div>
+</section>
+        
+    <section id="doctors" class="container reveal">
+    <div class="section-header"><h2>Наші <span>лікарі</span></h2></div>
+    <div class="doctors-grid"></div>
+</section>
 
     <section id="reviews" class="reviews-section reveal">
         <div class="container">
@@ -240,6 +187,157 @@
         </div>
     </section>
     
+    <section id="results" class="reveal" style="padding: 100px 5%; background: var(--bg);">
+    <div style="text-align: center; margin-bottom: 60px;">
+        <span style="color: var(--accent); font-weight: 800; letter-spacing: 2px; text-transform: uppercase;">Результати</span>
+        <h2 style="font-size: clamp(2rem, 5vw, 3rem); margin-top: 10px;">До та Після</h2>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto;">
+        
+        <div class="result-card" style="background: var(--card); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s ease;">
+            <div style="display: flex;">
+                <div style="width: 50%; position: relative; border-right: 1px solid var(--border);">
+                    <img src="photo/before.png" alt="Зуби до лікування" style="width: 100%; height: 250px; object-fit: cover;">
+                    <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">ДО</span>
+                </div>
+                <div style="width: 50%; position: relative;">
+                    <img src="photo/after.png" alt="Посмішка після вінірів" style="width: 100%; height: 250px; object-fit: cover;">
+                    <span style="position: absolute; bottom: 10px; right: 10px; background: var(--accent); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">ПІСЛЯ</span>
+                </div>
+            </div>
+            <div style="padding: 20px; text-align: center;">
+                <h4 style="color: var(--text); margin-bottom: 5px;">Художня реставрація</h4>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin: 0;">Повернення природної естетики</p>
+            </div>
+        </div>
+
+        <div class="result-card" style="background: var(--card); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s ease;">
+            <div style="display: flex;">
+                <div style="width: 50%; position: relative; border-right: 1px solid var(--border);">
+                    <img src="photo/before2.png" alt="Зуби до відбілювання" style="width: 100%; height: 250px; object-fit: cover;">
+                    <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">ДО</span>
+                </div>
+                <div style="width: 50%; position: relative;">
+                    <img src="photo/after2.png" alt="Зуби після відбілювання" style="width: 100%; height: 250px; object-fit: cover;">
+                    <span style="position: absolute; bottom: 10px; right: 10px; background: var(--accent); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">ПІСЛЯ</span>
+                </div>
+            </div>
+            <div style="padding: 20px; text-align: center;">
+                <h4 style="color: var(--text); margin-bottom: 5px;">Лазерне відбілювання</h4>
+                <p style="color: var(--text-dim); font-size: 0.9rem; margin: 0;">Результат за один візит</p>
+            </div>
+        </div>
+        
+        <div class="result-card" style="background: var(--card); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s ease;">
+    <div style="display: flex;">
+        <div style="width: 50%; position: relative; border-right: 1px solid var(--border);">
+            <img src="photo/before4.png" alt="До" style="width: 100%; height: 250px; object-fit: cover;">
+            <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">ДО</span>
+        </div>
+        <div style="width: 50%; position: relative;">
+            <img src="photo/after4.png" alt="Після" style="width: 100%; height: 250px; object-fit: cover;">
+            <span style="position: absolute; bottom: 10px; right: 10px; background: var(--accent); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">ПІСЛЯ</span>
+        </div>
+    </div>
+    <div style="padding: 20px; text-align: center;">
+        <h4 style="color: var(--text); margin-bottom: 5px;">Імплантація</h4>
+        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 0;">Відновлення втраченого зуба</p>
+    </div>
+</div>
+
+<div class="result-card" style="background: var(--card); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s ease;">
+    <div style="display: flex;">
+        <div style="width: 50%; position: relative; border-right: 1px solid var(--border);">
+            <img src="photo/before3.png" alt="До" style="width: 100%; height: 250px; object-fit: cover;">
+            <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">ДО</span>
+        </div>
+        <div style="width: 50%; position: relative;">
+            <img src="photo/after3.png" alt="Після" style="width: 100%; height: 250px; object-fit: cover;">
+            <span style="position: absolute; bottom: 10px; right: 10px; background: var(--accent); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">ПІСЛЯ</span>
+        </div>
+    </div>
+    <div style="padding: 20px; text-align: center;">
+        <h4 style="color: var(--text); margin-bottom: 5px;">Вирівнювання зубів</h4>
+        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 0;">Результат лікування брекетами</p>
+    </div>
+</div>
+<div class="result-card" style="background: var(--card); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s ease;">
+    <div style="display: flex;">
+        <div style="width: 50%; position: relative; border-right: 1px solid var(--border);">
+            <img src="photo/before5.png" alt="До" style="width: 100%; height: 250px; object-fit: cover;">
+            <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">ДО</span>
+        </div>
+        <div style="width: 50%; position: relative;">
+            <img src="photo/after5.png" alt="Після" style="width: 100%; height: 250px; object-fit: cover;">
+            <span style="position: absolute; bottom: 10px; right: 10px; background: var(--accent); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">ПІСЛЯ</span>
+        </div>
+    </div>
+    <div style="padding: 20px; text-align: center;">
+        <h4 style="color: var(--text); margin-bottom: 5px;">Чистка AirFlow</h4>
+        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 0;">Видалення нальоту та каменю</p>
+    </div>
+</div>
+
+<div class="result-card" style="background: var(--card); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); transition: transform 0.3s ease;">
+    <div style="display: flex;">
+        <div style="width: 50%; position: relative; border-right: 1px solid var(--border);">
+            <img src="photo/before6.png" alt="До" style="width: 100%; height: 250px; object-fit: cover;">
+            <span style="position: absolute; bottom: 10px; left: 10px; background: rgba(0,0,0,0.7); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">ДО</span>
+        </div>
+        <div style="width: 50%; position: relative;">
+            <img src="photo/after6.png" alt="Після" style="width: 100%; height: 250px; object-fit: cover;">
+            <span style="position: absolute; bottom: 10px; right: 10px; background: var(--accent); color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">ПІСЛЯ</span>
+        </div>
+    </div>
+    <div style="padding: 20px; text-align: center;">
+        <h4 style="color: var(--text); margin-bottom: 5px;">Лікування карієсу</h4>
+        <p style="color: var(--text-dim); font-size: 0.9rem; margin: 0;">Невидима фотополімерна пломба</p>
+    </div>
+</div>
+    </div>
+</section>
+
+<section id="faq" class="reveal" style="padding: 100px 5%; background: var(--card);">
+    <div style="max-width: 800px; margin: 0 auto;">
+        <div style="text-align: center; margin-bottom: 60px;">
+            <h2 style="font-size: clamp(2rem, 5vw, 3rem);">Часті запитання</h2>
+        </div>
+
+        <div class="faq-container">
+            <details style="margin-bottom: 15px; background: var(--bg); border-radius: 12px; border: 1px solid var(--border);">
+                <summary style="padding: 20px; cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    Чи боляче проводити лікування каналів?
+                    <i class="fas fa-plus" style="color: var(--accent); font-size: 0.8rem;"></i>
+                </summary>
+                <div style="padding: 0 20px 20px; color: var(--text-dim);">
+                    У нашій клініці ми використовуємо сучасну анестезію, яка повністю виключає больові відчуття. Ви будете відчувати лише легкий дотик лікаря.
+                </div>
+            </details>
+
+            <details style="margin-bottom: 15px; background: var(--bg); border-radius: 12px; border: 1px solid var(--border);">
+                <summary style="padding: 20px; cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    Як довго триває встановлення імпланта?
+                    <i class="fas fa-plus" style="color: var(--accent); font-size: 0.8rem;"></i>
+                </summary>
+                <div style="padding: 0 20px 20px; color: var(--text-dim);">
+                    Сама операція з встановлення одного імпланта триває від 30 до 60 хвилин. Процес повного приживлення займає від 3 до 6 місяців.
+                </div>
+            </details>
+
+            <details style="margin-bottom: 15px; background: var(--bg); border-radius: 12px; border: 1px solid var(--border);">
+                <summary style="padding: 20px; cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; align-items: center;">
+                    Чи надаєте ви гарантію на роботу?
+                    <i class="fas fa-plus" style="color: var(--accent); font-size: 0.8rem;"></i>
+                </summary>
+                <div style="padding: 0 20px 20px; color: var(--text-dim);">
+                    Так, EDEM Clinic надає офіційну гарантію на всі види послуг: від пломб (1 рік) до імплантів (довічна гарантія від виробника на саму конструкцію).
+                </div>
+            </details>
+        </div>
+    </div>
+</section>
+
     <footer>
         <div class="footer-grid">
             <div class="footer-col">
@@ -253,6 +351,9 @@
                 <a href="#prices">Ціни</a>
                 <a href="#doctors">Лікарі</a>
                 <a href="#contact">Запис</a>
+                <a href="#reviews">Відгуки</a>
+                <a href="#results">Результати</a>
+                <a href="#faq">FAQ</a>
             </div>
             <div class="footer-col">
                 <h4>Графік роботи</h4>
@@ -265,9 +366,9 @@
    
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
-
+<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script> 
 <script>
-  // Конфігурація вашого проєкту
+// Firebase
 const firebaseConfig = {
   apiKey: "AIzaSyCMoz3O3WXCLibLw1_dSh5ZhMKYPK1C6WU",
   authDomain: "edem-bbad7.firebaseapp.com",
@@ -278,15 +379,11 @@ const firebaseConfig = {
   appId: "1:900048422349:web:84c4215d59698a81e3b084",
   measurementId: "G-3L2WK17CS7"
 };
-
-  
-  // Ініціалізація
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database(); // Ця змінна 'db' тепер доступна в logik.js
+firebase.initializeApp(firebaseConfig);
+const db = firebase.database();
 </script>
 
     <script src="logik.js"></script>
 
 </body>
-
 </html>
