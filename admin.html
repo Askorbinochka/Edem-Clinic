@@ -5,168 +5,104 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Панель Адміністратора | EDEM Clinic</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-   <style>
-    :root {
-        --bg-body: #05070a;
-        --bg-card: #0d111a;
-        --accent: #00d2ff;
-        --danger: #ef4444;
-        --success: #10b981;
-        --warning: #f59e0b;
-        --text-main: #ffffff;
-        --text-dim: #94a3b8;
-        --border: rgba(255, 255, 255, 0.1);
-    }
-
-    body { 
-        background: var(--bg-body); 
-        color: var(--text-main); 
-        font-family: 'Segoe UI', Roboto, sans-serif; 
-        margin: 0;
-        padding: 20px;
-        line-height: 1.6;
-    }
-
-    .container { max-width: 1200px; margin: 0 auto; }
-
-    /* Header */
-    .admin-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 30px;
-        padding: 20px;
-        background: linear-gradient(90deg, #0d111a 0%, #161b22 100%);
-        border-radius: 15px;
-        border: 1px solid var(--border);
-    }
-
-    .admin-header h1 { margin: 0; font-size: 1.5rem; color: var(--accent); }
-
-    /* Cards */
-    .card { 
-        background: var(--bg-card); 
-        border: 1px solid var(--border); 
-        border-radius: 16px; 
-        padding: 24px; 
-        margin-bottom: 25px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    h2 { margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-size: 1.25rem; }
-    h2 i { color: var(--accent); }
-
-    /* Tables */
-    .table-container { overflow-x: auto; }
-    table { width: 100%; border-collapse: collapse; min-width: 600px; }
-    th { color: var(--text-dim); font-weight: 500; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
-    th, td { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; }
-    tr:hover { background: rgba(255,255,255,0.02); }
-
-    /* Buttons */
-    .btn { 
-        padding: 10px 18px; 
-        border-radius: 10px; 
-        cursor: pointer; 
-        border: none; 
-        font-weight: 600; 
-        transition: all 0.2s ease; 
-        display: inline-flex; 
-        align-items: center; 
-        gap: 8px; 
-        font-size: 0.85rem;
-    }
-    
-    .btn-exit { background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid var(--danger); }
-    .btn-exit:hover { background: var(--danger); color: white; }
-
-    .btn-ok { background: var(--success); color: white; }
-    .btn-ok:hover { opacity: 0.9; transform: translateY(-2px); }
-
-    .btn-del { background: rgba(239, 68, 68, 0.15); color: #ff6b6b; }
-    .btn-del:hover { background: var(--danger); color: white; }
-
-    /* Status Tags */
-    .status { font-size: 0.75rem; padding: 4px 12px; border-radius: 50px; font-weight: bold; display: inline-block; }
-    .pending { background: rgba(245, 158, 11, 0.15); color: var(--warning); border: 1px solid var(--warning); }
-    .approved { background: rgba(16, 185, 129, 0.15); color: var(--success); border: 1px solid var(--success); }
-
-    .empty-msg { text-align: center; padding: 40px; color: var(--text-dim); font-style: italic; }
-
-    /* --- НОВІ ПРАВИЛА АДАПТАЦІЇ --- */
-
-    @media (max-width: 768px) {
-        body { padding: 10px; }
-        
-        .admin-header { 
-            flex-direction: column; 
-            gap: 15px; 
-            text-align: center; 
-            padding: 15px;
+    <style>
+        :root {
+            --bg-body: #05070a;
+            --bg-card: #0d111a;
+            --accent: #00d2ff;
+            --danger: #ef4444;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --text-main: #ffffff;
+            --text-dim: #94a3b8;
+            --border: rgba(255, 255, 255, 0.1);
         }
 
-        .admin-header h1 { font-size: 1.2rem; }
-
-        .card { padding: 15px; }
-
-        /* Перетворюємо таблицю на картки */
-        table, thead, tbody, th, td, tr { 
-            display: block; 
+        body { 
+            background: var(--bg-body); 
+            color: var(--text-main); 
+            font-family: 'Segoe UI', Roboto, sans-serif; 
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
         }
 
-        thead tr { 
-            position: absolute;
-            top: -9999px;
-            left: -9999px;
-        }
+        .container { max-width: 1200px; margin: 0 auto; }
 
-        tr { 
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            margin-bottom: 15px;
-            background: rgba(255,255,255,0.02);
-            padding: 10px;
-        }
-
-        td { 
-            border: none;
-            border-bottom: 1px solid rgba(255,255,255,0.05); 
-            position: relative;
-            padding-left: 50% !important; 
-            text-align: right !important;
-            min-height: 40px;
+        .admin-header {
             display: flex;
+            justify-content: space-between;
             align-items: center;
-            justify-content: flex-end;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(90deg, #0d111a 0%, #161b22 100%);
+            border-radius: 15px;
+            border: 1px solid var(--border);
         }
 
-        td:last-child { border-bottom: none; }
+        .admin-header h1 { margin: 0; font-size: 1.5rem; color: var(--accent); }
 
-        /* Додаємо підписи до полів у мобільному режимі */
-        td::before { 
-            content: attr(data-label);
-            position: absolute;
-            left: 15px;
-            width: 45%; 
-            padding-right: 10px; 
-            white-space: nowrap;
-            text-align: left;
-            font-weight: 600;
-            color: var(--text-dim);
-            font-size: 0.8rem;
+        .card { 
+            background: var(--bg-card); 
+            border: 1px solid var(--border); 
+            border-radius: 16px; 
+            padding: 24px; 
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        /* Налаштування кнопок у мобільній таблиці */
-        td div { justify-content: flex-end; width: 100%; }
+        h2 { margin-bottom: 20px; display: flex; align-items: center; gap: 10px; font-size: 1.25rem; }
+        h2 i { color: var(--accent); }
+
+        .table-container { overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; min-width: 600px; }
+        th { color: var(--text-dim); font-weight: 500; text-transform: uppercase; font-size: 0.75rem; letter-spacing: 1px; }
+        th, td { padding: 16px; border-bottom: 1px solid rgba(255,255,255,0.05); text-align: left; }
+        tr:hover { background: rgba(255,255,255,0.02); }
+
+        .btn { 
+            padding: 10px 18px; 
+            border-radius: 10px; 
+            cursor: pointer; 
+            border: none; 
+            font-weight: 600; 
+            transition: all 0.2s ease; 
+            display: inline-flex; 
+            align-items: center; 
+            gap: 8px; 
+            font-size: 0.85rem;
+            color: white;
+        }
         
-        .btn { width: 100%; justify-content: center; padding: 12px; }
-    }
+        .btn-exit { background: rgba(239, 68, 68, 0.1); color: var(--danger); border: 1px solid var(--danger); }
+        .btn-exit:hover { background: var(--danger); color: white; }
+        .btn-ok { background: var(--success); }
+        .btn-edit { background: rgba(0, 210, 255, 0.15); color: var(--accent); }
+        .btn-del { background: rgba(239, 68, 68, 0.15); color: #ff6b6b; }
+        .btn-del:hover { background: var(--danger); color: white; }
 
-    @media (max-width: 480px) {
-        .admin-header h1 { font-size: 1.1rem; }
-        h2 { font-size: 1.1rem; }
-    }
-</style>
+        .status { font-size: 0.75rem; padding: 4px 12px; border-radius: 50px; font-weight: bold; display: inline-block; }
+        .pending { background: rgba(245, 158, 11, 0.15); color: var(--warning); border: 1px solid var(--warning); }
+        .approved { background: rgba(16, 185, 129, 0.15); color: var(--success); border: 1px solid var(--success); }
+
+        .empty-msg { text-align: center; padding: 40px; color: var(--text-dim); font-style: italic; }
+
+        input {
+            padding: 12px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            background: #05070a;
+            color: white;
+            outline: none;
+        }
+
+        .grid-form {
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+            gap: 15px; 
+            margin-bottom: 30px;
+        }
+    </style>
 </head>
 <body>
 
@@ -181,17 +117,17 @@
         <div class="card">
             <h2><i class="fas fa-calendar-check"></i> Заявки на прийом</h2>
             <div class="table-container">
-                <table id="appsTable">
+                <table>
                     <thead>
                         <tr>
-                            <th>Час реєстрації</th>
+                            <th>Час</th>
                             <th>Пацієнт</th>
                             <th>Телефон</th>
                             <th>Лікар</th>
                             <th>Дії</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody id="appsTableBody"></tbody>
                 </table>
             </div>
         </div>
@@ -199,7 +135,7 @@
         <div class="card">
             <h2><i class="fas fa-comment-dots"></i> Відгуки</h2>
             <div class="table-container">
-                <table id="revsTable">
+                <table>
                     <thead>
                         <tr>
                             <th>Автор</th>
@@ -208,130 +144,231 @@
                             <th>Дії</th>
                         </tr>
                     </thead>
-                    <tbody></tbody>
+                    <tbody id="revsTableBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-user-md"></i> Керування персоналом</h2>
+            <form id="doctorForm" class="grid-form">
+                <input type="hidden" id="docId">
+                <input type="text" id="docName" placeholder="ПІБ" required>
+                <input type="text" id="docRole" placeholder="Спеціалізація" required>
+                <input type="text" id="docExp" placeholder="Стаж" required>
+                <input type="text" id="docImg" placeholder="URL фото" required>
+                <button type="submit" class="btn btn-ok" id="docBtn">Додати лікаря</button>
+            </form>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Фото</th>
+                            <th>Ім'я</th>
+                            <th>Посада</th>
+                            <th>Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody id="doctorsListBody"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2><i class="fas fa-tags"></i> Керування прайс-листом</h2>
+            <form id="priceForm" class="grid-form">
+                <input type="hidden" id="priceId">
+                <input type="text" id="priceName" placeholder="Назва послуги" required>
+                <input type="text" id="priceValue" placeholder="Ціна" required>
+                <button type="submit" class="btn btn-ok" id="priceBtn">Додати послугу</button>
+            </form>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Послуга</th>
+                            <th>Ціна</th>
+                            <th>Дії</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pricesTableBody"></tbody>
                 </table>
             </div>
         </div>
     </div>
+
     <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-auth-compat.js"></script>
 
-<script>
-  // Конфігурація вашого проєкту
-  const firebaseConfig = {
-  apiKey: "AIzaSyCMoz3O3WXCLibLw1_dSh5ZhMKYPK1C6WU",
-  authDomain: "edem-bbad7.firebaseapp.com",
-  databaseURL: "https://edem-bbad7-default-rtdb.firebaseio.com",
-  projectId: "edem-bbad7",
-  storageBucket: "edem-bbad7.firebasestorage.app",
-  messagingSenderId: "900048422349",
-  appId: "1:900048422349:web:84c4215d59698a81e3b084",
-  measurementId: "G-3L2WK17CS7"
-};
-  
-  // Ініціалізація
-  firebase.initializeApp(firebaseConfig);
-  const db = firebase.database(); 
-</script>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyCMoz3O3WXCLibLw1_dSh5ZhMKYPK1C6WU",
+            authDomain: "edem-bbad7.firebaseapp.com",
+            databaseURL: "https://edem-bbad7-default-rtdb.firebaseio.com",
+            projectId: "edem-bbad7",
+            storageBucket: "edem-bbad7.firebasestorage.app",
+            messagingSenderId: "900048422349",
+            appId: "1:900048422349:web:84c4215d59698a81e3b084"
+        };
+        
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
 
-   <script>
-        // 1. Перевірка авторизації
-        if (sessionStorage.getItem('isAdmin') !== 'true') {
-            window.location.href = "index.html"; 
-        }
+        // 1. Авторизація
+        firebase.auth().onAuthStateChanged((user) => {
+            if (!user) {
+                window.location.href = "index.html"; 
+            } else {
+                loadData();
+            }
+        });
 
         function logout() {
-            if(confirm('Вийти з панелі керування?')) {
-                sessionStorage.removeItem('isAdmin'); 
-                window.location.href = "index.html"; 
+            if(confirm('Вийти з системи?')) {
+                firebase.auth().signOut().then(() => {
+                    window.location.href = "index.html";
+                });
             }
         }
 
-        // 2. Функція завантаження даних з Firebase (Realtime)
+        // 2. Завантаження даних
         function loadData() {
-            
-            // --- Стрім заявок ---
-            db.ref('appointments').on('value', (snapshot) => {
-                const appsBody = document.querySelector('#appsTable tbody');
+            // Прайс з кнопкою редагування
+            db.ref('prices').on('value', (snapshot) => {
+                const body = document.getElementById('pricesTableBody');
                 const data = snapshot.val();
-                
-                if (!data) {
-                    appsBody.innerHTML = `<tr><td colspan="4" class="empty-msg">Нових заявок немає</td></tr>`;
-                    return;
-                }
-
-appsBody.innerHTML = Object.keys(data).map(id => {
-    const a = data[id];
-    return `
-        <tr>
-            <td data-label="Час">${a.date || 'Щойно'}</td>
-            <td data-label="Пацієнт"><strong>${a.name}</strong></td>
-            <td data-label="Телефон">${a.phone}</td>
-            <td data-label="Лікар" style="color: var(--accent)">${a.doctor || 'Не вказано'}</td>
-            <td data-label="Дії">
-                <button class="btn btn-del" onclick="deleteItem('appointments', '${id}')">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </td>
-        </tr>`;
-                }).reverse().join('');
+                body.innerHTML = data ? Object.keys(data).map(id => `
+                    <tr>
+                        <td>${data[id].name}</td>
+                        <td><strong>${data[id].price}</strong></td>
+                        <td>
+                            <button class="btn btn-edit" onclick="editPrice('${id}', '${data[id].name}', '${data[id].price}')"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-del" onclick="deleteItem('prices', '${id}')"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `).join('') : '<tr><td colspan="3" class="empty-msg">Прайс порожній</td></tr>';
             });
 
-            // --- Стрім відгуків ---
-            db.ref('reviews').on('value', (snapshot) => {
-                const revsBody = document.querySelector('#revsTable tbody');
+            // Заявки
+            db.ref('appointments').on('value', (snapshot) => {
+                const body = document.getElementById('appsTableBody');
                 const data = snapshot.val();
+                body.innerHTML = data ? Object.keys(data).map(id => `
+                    <tr>
+                        <td>${data[id].date || 'Не вказано'}</td>
+                        <td><strong>${data[id].name}</strong></td>
+                        <td>${data[id].phone}</td>
+                        <td>${data[id].doctor || '-'}</td>
+                        <td><button class="btn btn-del" onclick="deleteItem('appointments', '${id}')"><i class="fas fa-trash"></i></button></td>
+                    </tr>
+                `).reverse().join('') : '<tr><td colspan="5" class="empty-msg">Немає заявок</td></tr>';
+            });
 
-                if (!data) {
-                    revsBody.innerHTML = `<tr><td colspan="4" class="empty-msg">Відгуків поки немає</td></tr>`;
-                    return;
-                }
+            // Лікарі
+            db.ref('doctors').on('value', (snapshot) => {
+                const body = document.getElementById('doctorsListBody');
+                const data = snapshot.val();
+                body.innerHTML = data ? Object.keys(data).map(id => `
+                    <tr>
+                        <td><img src="${data[id].img}" width="40" height="40" style="border-radius:50%; object-fit:cover;"></td>
+                        <td>${data[id].name}</td>
+                        <td>${data[id].role}</td>
+                        <td>
+                            <button class="btn btn-edit" onclick="editDoctor('${id}', '${data[id].name}', '${data[id].role}', '${data[id].exp}', '${data[id].img}')"><i class="fas fa-edit"></i></button>
+                            <button class="btn btn-del" onclick="deleteItem('doctors', '${id}')"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `).join('') : '<tr><td colspan="4" class="empty-msg">Персонал не додано</td></tr>';
+            });
 
-                revsBody.innerHTML = Object.keys(data).map(id => {
+            // Відгуки
+            db.ref('reviews').on('value', (snapshot) => {
+                const body = document.getElementById('revsTableBody');
+                const data = snapshot.val();
+                body.innerHTML = data ? Object.keys(data).map(id => {
                     const r = data[id];
                     const isPending = r.status === 'pending';
                     return `
-                        <tr>
-                            <td data-label="Автор"><strong>${r.name}</strong></td>
-                            <td data-label="Відгук" style="max-width: 300px; font-size: 0.9rem;">${r.text}</td>
-                            <td data-label="Статус">
-                                <span class="status ${isPending ? 'pending' : 'approved'}">
-                                    ${isPending ? '⏳ Очікує' : '✅ Схвалено'}
-                                </span>
-                            </td>
-                            <td data-label="Дії">
-                                <div style="display: flex; gap: 8px;">
-                                    ${isPending ? `
-                                        <button class="btn btn-ok" onclick="updateStatus('${id}', 'approved')">
-                                            <i class="fas fa-check"></i>
-                                        </button>` : ''}
-                                    <button class="btn btn-del" onclick="deleteItem('reviews', '${id}')">
-                                        <i class="fas fa-trash"></i>
-                                    </button>
-                                </div>
-                            </td>
-                        </tr>`;
-                }).reverse().join('');
+                    <tr>
+                        <td><strong>${r.name}</strong></td>
+                        <td>${r.text}</td>
+                        <td><span class="status ${isPending ? 'pending' : 'approved'}">${isPending ? '⏳' : '✅'}</span></td>
+                        <td>
+                            ${isPending ? `<button class="btn btn-ok" onclick="updateStatus('${id}', 'approved')"><i class="fas fa-check"></i></button>` : ''}
+                            <button class="btn btn-del" onclick="deleteItem('reviews', '${id}')"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>`;
+                }).reverse().join('') : '<tr><td colspan="4" class="empty-msg">Немає відгуків</td></tr>';
             });
         }
 
-        // 3. Керування даними в Firebase
+        // --- Універсальні функції ---
         function deleteItem(path, id) {
-            if(confirm('Видалити цей запис безповоротно?')) {
-                db.ref(`${path}/${id}`).remove()
-                    .then(() => console.log('Видалено'))
-                    .catch(err => alert('Помилка видалення: ' + err.message));
-            }
+            if(confirm('Видалити цей запис?')) db.ref(`${path}/${id}`).remove();
         }
 
         function updateStatus(id, newStatus) {
-            db.ref(`reviews/${id}`).update({ status: newStatus })
-                .then(() => console.log('Статус оновлено'))
-                .catch(err => alert('Помилка: ' + err.message));
+            db.ref(`reviews/${id}`).update({ status: newStatus });
         }
 
-        // Запуск
-        window.onload = loadData;
+        // --- ЛОГІКА ПРАЙСУ ---
+        const priceForm = document.getElementById('priceForm');
+        priceForm.onsubmit = (e) => {
+            e.preventDefault();
+            const id = document.getElementById('priceId').value;
+            const priceData = {
+                name: document.getElementById('priceName').value,
+                price: document.getElementById('priceValue').value
+            };
+            if (id) {
+                db.ref('prices/' + id).update(priceData).then(() => alert('Оновлено!'));
+            } else {
+                db.ref('prices').push(priceData).then(() => alert('Додано!'));
+            }
+            priceForm.reset();
+            document.getElementById('priceId').value = '';
+            document.getElementById('priceBtn').innerText = 'Додати послугу';
+        };
+
+        function editPrice(id, name, price) {
+            document.getElementById('priceId').value = id;
+            document.getElementById('priceName').value = name;
+            document.getElementById('priceValue').value = price;
+            document.getElementById('priceBtn').innerText = 'Зберегти зміни';
+            window.scrollTo({ top: document.getElementById('priceForm').offsetTop - 50, behavior: 'smooth' });
+        }
+
+        // --- ЛОГІКА ЛІКАРІВ ---
+        const docForm = document.getElementById('doctorForm');
+        docForm.onsubmit = (e) => {
+            e.preventDefault();
+            const id = document.getElementById('docId').value;
+            const newDoc = {
+                name: document.getElementById('docName').value,
+                role: document.getElementById('docRole').value,
+                exp: document.getElementById('docExp').value,
+                img: document.getElementById('docImg').value
+            };
+            if (id) {
+                db.ref('doctors/' + id).update(newDoc).then(() => alert('Оновлено!'));
+            } else {
+                db.ref('doctors').push(newDoc).then(() => alert('Додано!'));
+            }
+            docForm.reset();
+            document.getElementById('docId').value = '';
+            document.getElementById('docBtn').innerText = 'Додати лікаря';
+        };
+
+        function editDoctor(id, name, role, exp, img) {
+            document.getElementById('docId').value = id;
+            document.getElementById('docName').value = name;
+            document.getElementById('docRole').value = role;
+            document.getElementById('docExp').value = exp;
+            document.getElementById('docImg').value = img;
+            document.getElementById('docBtn').innerText = 'Зберегти зміни';
+            window.scrollTo({ top: document.getElementById('doctorForm').offsetTop - 50, behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
